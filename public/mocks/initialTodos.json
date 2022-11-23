@@ -1,0 +1,19 @@
+{
+  "todos":[
+    {
+      "id": 1,
+      "caption": "Sweep the floor",
+      "isChecked": false
+    },
+    {
+      "id": 2,
+      "caption": "Clean out refrigerator",
+      "isChecked": true
+    },
+    {
+      "id": 3,
+      "caption": "Emtpy garbage",
+      "isChecked": false
+    }
+  ]
+}

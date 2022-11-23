@@ -1,0 +1,18 @@
+{
+  "name": "vite-emogb-lluis",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "typescript": "^4.9.3",
+    "vue": "^3.0.4"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.0.4",
+    "sass": "^1.56.1",
+    "sass-loader": "^10.4.1",
+    "vite": "^1.0.0-rc.13"
+  }
+}
