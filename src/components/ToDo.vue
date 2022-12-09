@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <Explanation />
+    <ExplanationSection />
     <section class="todo-list" v-if="todoList.length">
       <form action="#" class="todo-form" @submit.prevent="addTodo">
-        <input v-model="todoInput" type="text" placeholder="Please type here a new ToDo item ...">
+        <input v-model="todoInput" type="text" placeholder="Please type here a new ToDo item ..." data-test=new-todo>
       </form>
       <ul>
         <li v-for="todo in visibleItems" :key="todo.id">
@@ -18,9 +18,9 @@
 
 <script lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import ToDoItem from './ToDoItem.vue'
-import Explanation from './Explanation.vue'
-import FilteringTool from './FilteringTool.vue'
+import ToDoItem from './ToDo/ToDoItem.vue'
+import ExplanationSection from './ToDo/ExplanationSection.vue'
+import FilteringTool from './ToDo/FilteringTool.vue'
 
 interface TodoItem {
   id: number;
@@ -33,27 +33,30 @@ type FilterType = "all"|"checked"|"unchecked"
 export default {
   name: 'ToDo',
   components: {
-    ToDoItem, Explanation, FilteringTool
+    ToDoItem, ExplanationSection, FilteringTool
   },
   setup() {
     const todoInput =  ref<string>('')
-    const nextTodoId = ref(4)
+    const nextTodoId = ref<number>(0)
     const appliedFilter = ref<FilterType>("all")
     const todoList = ref<TodoItem[]>([]) 
 
     const loadInitialData = async () => {
-      const response = await fetch("../mocks/initialTodos.json");
-      const intialData = await response.json();
-      todoList.value = intialData.todos;
+      const response = await fetch("../mocks/initialTodos.json")
+      const intialData = await response.json()
+      todoList.value = intialData.todos
+      nextTodoId.value = todoList.value.length + 1 
     }
 
     const visibleItems = computed(():TodoItem[] => {
       if (appliedFilter.value === "all") return todoList.value
-      if (appliedFilter.value === "checked") return todoList.value.filter(item => item.isChecked === true)
-      if (appliedFilter.value === "unchecked") return todoList.value.filter(item => item.isChecked === false)
+      if (appliedFilter.value === "checked") return todoList.value.filter((item:TodoItem) => item.isChecked === true)
+      if (appliedFilter.value === "unchecked") return todoList.value.filter((item:TodoItem) => item.isChecked === false)
+      return []
     })
 
     function addTodo(): void {
+      if (todoInput.value.length === 0) { return }
       const newTodo: TodoItem = {
         id: nextTodoId.value,
         caption: todoInput.value,

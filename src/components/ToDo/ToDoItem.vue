@@ -4,6 +4,7 @@
     <span
       v-show="!editing"
       :class="{'checked-item' : todo.isChecked}"
+      data-test=todo-label
     >
       {{ todo.caption }}
     </span>
@@ -15,7 +16,7 @@
 
   </div>
   <div class="controls">
-    <button class="edit-button" @click="editing=true">Edit</button>
+    <button class="edit-button" @click="editing=!editing">{{ editing? 'Save':'Edit' }}</button>
     <button @click="$emit('deleteTodo', todo.id)">X</button>
   </div>
 </template>
@@ -28,7 +29,7 @@ export default({
   emits: ['deleteTodo'],
   setup () {
     const editing = ref<boolean>(false)
-    return { editing }
+    return { editing}
   }
 })
 </script>
