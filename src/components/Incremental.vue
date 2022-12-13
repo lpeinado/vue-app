@@ -15,7 +15,8 @@ import myModule from '../modules/myModule'
 
 export default defineComponent({
   setup () {
-    return myModule()
+    const {counter, increment, placesLeft, attending} = myModule();
+    return {counter, increment, placesLeft, attending}
   }
 })
 
