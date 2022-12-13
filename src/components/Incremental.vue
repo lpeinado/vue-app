@@ -10,17 +10,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue'
+import { defineComponent } from 'vue'
+import myModule from '../modules/myModule'
 
 export default defineComponent({
   setup () {
-    const counter = ref(2)
-    const increment = () => counter.value ++
-    const attending = ref(['Luigi','Rosita','Tomàs'])
-    const placesLeft = computed(()=> counter.value - attending.value.length)
-    return {counter, increment, placesLeft, attending}
+    return myModule()
   }
 })
+
 </script>
 
 <style scoped>
