@@ -10,17 +10,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive, toRefs } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
 
 export default defineComponent({
   setup () {
-    const event = reactive({
-      counter:14,
-      attending:['Luigi','Rosita','Tomàs'],
-      placesLeft: computed(()=> event.counter - event.attending.length)
-    })
-    const increment = () => event.counter ++
-    return { ...toRefs(event), increment}
+    const counter = ref(2)
+    const increment = () => counter.value ++
+    const attending = ref(['Luigi','Rosita','Tomàs'])
+    const placesLeft = computed(()=> counter.value - attending.value.length)
+    return {counter, increment, placesLeft, attending}
   }
 })
 </script>
