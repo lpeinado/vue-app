@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Incremental />
     <ExplanationSection />
     <section class="todo-list" v-if="todoList.length">
       <form action="#" class="todo-form" @submit.prevent="addTodo">
@@ -21,6 +22,8 @@ import { ref, computed, onMounted } from 'vue'
 import ToDoItem from './ToDo/ToDoItem.vue'
 import ExplanationSection from './ToDo/ExplanationSection.vue'
 import FilteringTool from './ToDo/FilteringTool.vue'
+import Incremental from './Incremental.vue'
+import {useTimeAgo} from '@vueuse/core'
 
 interface TodoItem {
   id: number;
@@ -33,9 +36,11 @@ type FilterType = "all"|"checked"|"unchecked"
 export default {
   name: 'ToDo',
   components: {
-    ToDoItem, ExplanationSection, FilteringTool
+    ToDoItem, ExplanationSection, FilteringTool, Incremental
   },
   setup() {
+    const ras = useTimeAgo(new Date(2022,11,1));
+    console.log("RAS",ras.value);
     const todoInput =  ref<string>('')
     const nextTodoId = ref<number>(0)
     const appliedFilter = ref<FilterType>("all")
