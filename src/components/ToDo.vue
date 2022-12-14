@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Watcher />
     <Incremental />
     <ExplanationSection />
     <section class="todo-list" v-if="todoList.length">
@@ -23,6 +24,7 @@ import ToDoItem from './ToDo/ToDoItem.vue'
 import ExplanationSection from './ToDo/ExplanationSection.vue'
 import FilteringTool from './ToDo/FilteringTool.vue'
 import Incremental from './Incremental.vue'
+import Watcher from './Watcher.vue'
 import {useTimeAgo} from '@vueuse/core'
 
 interface TodoItem {
@@ -36,7 +38,7 @@ type FilterType = "all"|"checked"|"unchecked"
 export default {
   name: 'ToDo',
   components: {
-    ToDoItem, ExplanationSection, FilteringTool, Incremental
+    ToDoItem, ExplanationSection, FilteringTool, Incremental, Watcher,
   },
   setup() {
     const ras = useTimeAgo(new Date(2022,11,1));
