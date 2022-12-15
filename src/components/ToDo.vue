@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <EventSharing />
     <Watcher />
     <Incremental />
     <ExplanationSection />
@@ -25,6 +26,7 @@ import ExplanationSection from './ToDo/ExplanationSection.vue'
 import FilteringTool from './ToDo/FilteringTool.vue'
 import Incremental from './Incremental.vue'
 import Watcher from './Watcher.vue'
+import EventSharing from './EventSharing.vue'
 import {useTimeAgo} from '@vueuse/core'
 
 interface TodoItem {
@@ -38,7 +40,7 @@ type FilterType = "all"|"checked"|"unchecked"
 export default {
   name: 'ToDo',
   components: {
-    ToDoItem, ExplanationSection, FilteringTool, Incremental, Watcher,
+    ToDoItem, ExplanationSection, FilteringTool, Incremental, Watcher, EventSharing,
   },
   setup() {
     const ras = useTimeAgo(new Date(2022,11,1));
