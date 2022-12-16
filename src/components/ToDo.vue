@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, defineComponent } from 'vue'
 import ToDoItem from './ToDo/ToDoItem.vue'
 import ExplanationSection from './ToDo/ExplanationSection.vue'
 import FilteringTool from './ToDo/FilteringTool.vue'
@@ -37,7 +37,7 @@ interface TodoItem {
 type FilterType = "all"|"checked"|"unchecked"
 
 
-export default {
+export default defineComponent({
   name: 'ToDo',
   components: {
     ToDoItem, ExplanationSection, FilteringTool, Incremental, Watcher, EventSharing,
@@ -86,7 +86,7 @@ export default {
 
     return { todoInput, todoList, addTodo, deleteTodo, visibleItems, appliedFilter }
   }
-}
+})
 </script>
 
 <style scoped lang="scss">
