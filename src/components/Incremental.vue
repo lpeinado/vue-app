@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="increments">
+    Increments value as you click:
     <p>{{ counter }}</p>
     <button type="button" @click="increment">Incr. counter</button>
     <div v-for="(value, key) in attending" :index="key">
@@ -62,5 +63,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.increments{
+  border: 1px solid grey;
+  padding: 10px;
+}
 
 </style>

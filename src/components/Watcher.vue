@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="watcher">
+    Whatches and counts:
     <input type="text" name="watched" v-model="watchedThing" />
     <span>{{count}}</span>
 
@@ -21,5 +22,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
+.watcher{
+  border: 1px solid grey;
+  padding: 10px;
+}
 </style>
