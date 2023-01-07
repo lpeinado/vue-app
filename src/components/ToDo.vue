@@ -27,7 +27,7 @@ import FilteringTool from './ToDo/FilteringTool.vue'
 import Incremental from './Incremental.vue'
 import Watcher from './Watcher.vue'
 import EventSharing from './EventSharing.vue'
-import {useTimeAgo} from '@vueuse/core'
+import {useTimeAgo, useAsyncState} from '@vueuse/core'
 
 interface TodoItem {
   id: number;
@@ -50,12 +50,14 @@ export default defineComponent({
     const appliedFilter = ref<FilterType>("all")
     const todoList = ref<TodoItem[]>([]) 
 
-    const loadInitialData = async () => {
+    async function fetchData() {
       const response = await fetch("../mocks/initialTodos.json")
       const intialData = await response.json()
       todoList.value = intialData.todos
       nextTodoId.value = todoList.value.length + 1 
     }
+
+    const {state, isLoading} = useAsyncState(fetchData(), undefined, {})
 
     const visibleItems = computed(():TodoItem[] => {
       if (appliedFilter.value === "all") return todoList.value
