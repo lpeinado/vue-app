@@ -29,12 +29,7 @@ import Watcher from './Watcher.vue'
 import EventSharing from './EventSharing.vue'
 import {useTimeAgo, useAsyncState} from '@vueuse/core'
 
-interface TodoItem {
-  id: number;
-  caption: string;
-  isChecked: boolean; 
-}
-type FilterType = "all"|"checked"|"unchecked"
+import { FilterType, TodoItem } from '../types'
 
 
 export default defineComponent({
