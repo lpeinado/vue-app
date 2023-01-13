@@ -82,10 +82,6 @@ export default defineComponent({
       todoList.value = todoList.value.filter((todo: TodoItem) => todo.id !== id)
     }
 
-    onMounted(() => {
-      loadInitialData()
-    })
-
     return { todoInput, todoList, addTodo, deleteTodo, visibleItems, appliedFilter }
   }
 })
