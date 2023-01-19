@@ -30,6 +30,7 @@ import EventSharing from './EventSharing.vue'
 import {useTimeAgo, useAsyncState} from '@vueuse/core'
 
 import { FilterType, TodoItem } from '../types'
+import { initial } from 'cypress/types/lodash'
 
 
 export default defineComponent({
@@ -47,8 +48,8 @@ export default defineComponent({
 
     async function fetchData() {
       const response = await fetch("../mocks/initialTodos.json")
-      const intialData = await response.json()
-      todoList.value = intialData.todos
+      const initialData = await response.json()
+      todoList.value = initialData.todos
       nextTodoId.value = todoList.value.length + 1 
     }
 

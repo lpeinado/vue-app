@@ -16,6 +16,11 @@ export default {
   },
   components: {
     ToDo
+  },
+  provide() {
+    return {
+      providedString:"This is a provided string by App.vue"
+    }
   }
 }
 </script>
