@@ -12,6 +12,7 @@ export default {
   name: 'App',
   setup () {
     const title = useTitle("Initial")
+    console.log(title.value)
     return {title}
   },
   components: {
