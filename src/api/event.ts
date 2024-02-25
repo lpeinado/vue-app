@@ -1,5 +1,5 @@
 const eventApi = () => {
-  function getEventCount(stringValue){
+  function getEventCount(stringValue: string){
     const value = () => stringValue.length
     return setTimeout(value,20000)
   }

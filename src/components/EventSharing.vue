@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue'
-import eventApi from "../api/event.js";
+import eventApi from "../api/event";
 
 export default defineComponent({
   setup () {
