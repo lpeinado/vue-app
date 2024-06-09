@@ -11,7 +11,7 @@ import eventApi from "../api/event";
 
 export default defineComponent({
   setup () {
-    const myValue = ref<string>("Who knows!")
+    const myValue = ref<string>("Who knows aadsfadf!")
     const numericValue:any = ref(null)
     async function loadData(search: string) {
       numericValue.value = eventApi().getEventCount(search)
